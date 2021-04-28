@@ -1,0 +1,29 @@
+.user {
+    background-image: linear-gradient(360deg, #212230, #333553);
+    color: #fff;
+    border-bottom: 2px solid #fff;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    padding: 0px 25px 0px 25px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+}
+img.logo {
+    border-radius: 50%;
+    width: 70%;
+}
+button.pagar {
+    margin-left: auto;
+    font-size: 16px;
+    font-weight: bold;
+}
+.source {
+    display: flex;
+    margin-right: -20px;
+}
+.todos {
+    width: 85%;
+    margin: auto;
+}
