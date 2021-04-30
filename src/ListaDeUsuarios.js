@@ -17,9 +17,7 @@ export default function ListaDeUsuarios(){
 
   // Retorna os componentes
 
-  // Agora vc tem todos os dados dentro da constante usuarios que a gente criou
-  // É só tratar os dados
-  // Lembrando que toda imagem tem que ter alt kkkk
+  // Lembrando que toda imagem tem que ter alt
   /*
     Estrutura da variável usuario...
     - Cada índice representa um usuario. Exemplo: usuario[0], usuario[1]...
@@ -29,7 +27,6 @@ export default function ListaDeUsuarios(){
       usuario[0].username -> nome de usuário
       usuario[0].id -> id do usuario
   */
-  // Esse que eu fiz é só um exemplo... Vc pode fazer com tabela, com div.. Vc escolhe
   // Lembrando que o 'usu' não pode se chamar 'usuario' pq essa variável já existe
   // Se não ele dá erro
   // Nesse caso o return é implicito.. Não precisa escrever
