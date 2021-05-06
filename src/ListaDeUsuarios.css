@@ -24,6 +24,50 @@ button.pagar {
     margin-right: -20px;
 }
 .todos {
-    width: 85%;
     margin: auto;
+}
+.pagar{
+    cursor: pointer;
+}
+.modal{
+    height: 300px;
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 1;
+    top: 22%;
+    left: 52%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    filter: drop-shadow(1px 1px 32px black);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+ input, select {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    height: 30px;
+
+}
+
+.input, .select{
+    width: 100%;
+     margin-bottom: 30px;
+   
+}
+.headermodal {
+    background: #414269d9;
+     margin-bottom: 30px;
+    color: white;
+}
+h3{
+     padding: 0px 10px 0px 10px;
+}
+button.pagarmodal {
+    width: 100px;
+    height: 30px;
+    font-size: 19px;
+     cursor: pointer;
 }
