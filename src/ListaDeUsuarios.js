@@ -9,7 +9,7 @@ export default function ListaDeUsuarios(){
   // setUsuario configura o valor da variavel
   const [usuario, setUsuario] = useState([]);
   const [showModal, setshowModal] = useState(false)
-  
+  const [usuarioSelec, setusuarioSelec] = useState({})
   
   // Faz a busca na API e joga o resultado dentro de usuario
   // A busca só é feita quando a página é carregada
@@ -20,8 +20,6 @@ export default function ListaDeUsuarios(){
   }, []);
 
   
-  
-
   // Retorna os componentes
 
   // Lembrando que toda imagem tem que ter alt
@@ -37,10 +35,12 @@ export default function ListaDeUsuarios(){
   // Lembrando que o 'usu' não pode se chamar 'usuario' pq essa variável já existe
   // Se não ele dá erro
   // Nesse caso o return é implicito.. Não precisa escrever
-  
- const openModal = ()=> { 
+
+ const openModal = (usuario)=> { 
    setshowModal (prev => !prev);
+    setusuarioSelec(usuario)
 };
+
 
   return (
     <div className="todos">
@@ -52,12 +52,12 @@ export default function ListaDeUsuarios(){
                 Nome do Usuario: {usu.name}<br></br>
                 Id: {usu.id} -
                 Username: {usu.username}
-              <button className="pagar" onClick={openModal}>Pagar</button>
+              <button className="pagar" onClick={ () => openModal(usu)}>Pagar</button>
                 
             </div>
           )
         )}
-        <div className="modalph"><Modal showModal={showModal} setshowModal={setshowModal}/></div>
+        <div className="modalph"><Modal showModal={showModal} setshowModal={setshowModal} usuario={usuarioSelec}/></div>
     </div>
     
   );  

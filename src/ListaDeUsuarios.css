@@ -42,6 +42,7 @@ button.pagar {
     align-items: center;
     display: flex;
     flex-direction: column;
+    width: 400px;
 
 }
  input, select {
@@ -54,20 +55,37 @@ button.pagar {
 
 .input, .select{
     width: 100%;
-     margin-bottom: 30px;
-   
+    margin-bottom: 30px;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
 .headermodal {
     background: #414269d9;
-     margin-bottom: 30px;
+    margin-bottom: 30px;
     color: white;
+    width: 100%;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
 }
 h3{
      padding: 0px 10px 0px 10px;
+     text-align: center;
 }
 button.pagarmodal {
     width: 100px;
     height: 30px;
     font-size: 19px;
      cursor: pointer;
+}
+select{
+    height: 36px;
+    width: 92%;
+}
+.resultado{
+    position: fixed;
+    z-index: 1;
+    background-color: green;
 }

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import ListaDeUsuarios from './ListaDeUsuarios.js'
 import axios from 'axios';
 import CurrencyInput from 'react-currency-masked-input';
+import { render } from '@testing-library/react';
 
-   export const Modal = ({showModal, setshowModal}) => {
-    
+
+   export const Modal = ({showModal, setshowModal, usuario}) => {
+    console.log(usuario)
      const [viewUser, setviewUser] = useState([])
+     const [modalResp, setmodalResp] = useState(false)
+     const [modaldois, setmodaldois] = useState("none")
      let cards = [
       // valid card
       {
@@ -20,29 +23,47 @@ import CurrencyInput from 'react-currency-masked-input';
         expiry_date: '01/20',
       },
     ];
+
      useEffect(() => {
-      axios.get('https://www.mocky.io/v2/5d531c4f2e0000620081ddce').then(
-        response => setviewUser(response.data)
+      axios.post('https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989').then(
+        response => {setviewUser(response.data);
+          
+        }
       )
     }, []);
+    console.log(modaldois)
+
+    
+    const resultado = (e) =>{
+      e.preventDefault();
+     //console.log(viewUser.status)
+     setmodaldois("block")
+    }
 
      return <>{showModal ? 
-      <div className="modal">
+      <div>
+      <form className="modal" onSubmit={resultado}>
        <div className="headermodal">
-        <h3>Pagamento para <span style={{color: "yellow"}}>NOME DO USUARIO</span></h3>
+        <h3>Pagamento para <span style={{color: "yellow"}}>{usuario.name}</span></h3>
       </div>
       <div className="input">
         <CurrencyInput name="myInput" required />
       </div>
       <div className="select">
         <select>
-          <option>Cartão com final 1234</option>
-          <option>Cartão com final 1111</option>
+        {cards.map(
+          cartao => (
+          <option>Cartão com final {cartao.card_number.substr(-4)}</option>
+         ))}
         </select>
       </div>
       <div>
         <button className="pagarmodal">Pagar</button>
       </div>
+      <div className="resultado" style={{display:modaldois}}>
+        Transação {viewUser.status} com sucesso!
+      </div>
+      </form>
     </div>: null}</>;
                           
 
