@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CurrencyInput from 'react-currency-masked-input';
 import { render } from '@testing-library/react';
+import ListaDeUsuarios from './ListaDeUsuarios';
 
 
    export const Modal = ({showModal, setshowModal, usuario}) => {
-    console.log(usuario)
+    //console.log(usuario)
      const [viewUser, setviewUser] = useState([])
      const [modalResp, setmodalResp] = useState(false)
      const [modaldois, setmodaldois] = useState("none")
@@ -31,20 +32,26 @@ import { render } from '@testing-library/react';
         }
       )
     }, []);
-    console.log(modaldois)
+    //console.log('showModal', showModal)
+ 
 
-    
     const resultado = (e) =>{
       e.preventDefault();
      //console.log(viewUser.status)
-     setmodaldois("block")
+     
+     setmodaldois("flex")
     }
+const clmd = () =>{
+  setmodaldois("none")
+  setshowModal(prev => !prev)
+}
 
      return <>{showModal ? 
       <div>
       <form className="modal" onSubmit={resultado}>
        <div className="headermodal">
         <h3>Pagamento para <span style={{color: "yellow"}}>{usuario.name}</span></h3>
+        <button className="fechar" onClick={clmd}>X</button>
       </div>
       <div className="input">
         <CurrencyInput name="myInput" required />
@@ -53,17 +60,20 @@ import { render } from '@testing-library/react';
         <select>
         {cards.map(
           cartao => (
-          <option>Cartão com final {cartao.card_number.substr(-4)}</option>
+          <option value={cartao.card_number}>Cartão com final {cartao.card_number.substr(-4)}</option>
          ))}
         </select>
       </div>
       <div>
         <button className="pagarmodal">Pagar</button>
       </div>
-      <div className="resultado" style={{display:modaldois}}>
-        Transação {viewUser.status} com sucesso!
-      </div>
       </form>
+      <div className="resultado" style={{display:modaldois}}>
+        <div>Transação {viewUser.status} com sucesso!</div>
+      </div>
+      <div id="erro" style={{display:modaldois}}>
+        <div>Transação não foi com sucesso!</div>
+      </div>
     </div>: null}</>;
                           
 
