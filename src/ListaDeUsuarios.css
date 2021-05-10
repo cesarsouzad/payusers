@@ -35,7 +35,7 @@ button.pagar {
     position: fixed;
     z-index: 1;
     top: 22%;
-    left: 52%;
+    left: 50%;
     transform: translateX(-50%);
     border-radius: 5px;
     filter: drop-shadow(1px 1px 32px black);
@@ -95,7 +95,8 @@ select{
     color: white;
     width: 400px;
     height: 100px;
-    right: 239px;
+    left: 50%;
+    transform: translateX(-50%);
     margin: 0;
     align-items: center;
     justify-content: center;
