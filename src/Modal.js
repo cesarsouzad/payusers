@@ -10,6 +10,7 @@ import ListaDeUsuarios from './ListaDeUsuarios';
      const [viewUser, setviewUser] = useState([])
      const [modalResp, setmodalResp] = useState(false)
      const [modaldois, setmodaldois] = useState("none")
+     const [recibo, setrecibo] = useState("none")
      let cards = [
       // valid card
       {
@@ -33,18 +34,28 @@ import ListaDeUsuarios from './ListaDeUsuarios';
       )
     }, []);
     //console.log('showModal', showModal)
- 
+    const opt1 = cards[0].card_number
+   
+   
+    
 
     const resultado = (e) =>{
       e.preventDefault();
      //console.log(viewUser.status)
-     
-     setmodaldois("flex")
-    }
-const clmd = () =>{
+if ( document.querySelector('select').value === opt1){
+  setmodaldois("flex")
+}else{
   setmodaldois("none")
-  setshowModal(prev => !prev)
+  setrecibo("flex")
 }
+     
+    }
+
+    const clmd = () =>{
+      setmodaldois("none")
+      setrecibo("none")
+      setshowModal(prev => !prev)
+    }
 
      return <>{showModal ? 
       <div>
@@ -69,10 +80,10 @@ const clmd = () =>{
       </div>
       </form>
       <div className="resultado" style={{display:modaldois}}>
-        <div>Transação {viewUser.status} com sucesso!</div>
+        <div>Transação foi {viewUser.status} com sucesso!</div>
       </div>
-      <div id="erro" style={{display:modaldois}}>
-        <div>Transação não foi com sucesso!</div>
+      <div id="erroT" style={{display:recibo}}>
+        <div>Transação não foi {viewUser.status} com sucesso!</div>
       </div>
     </div>: null}</>;
                           
